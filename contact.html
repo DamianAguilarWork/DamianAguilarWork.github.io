@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv = "X-UA-Compatible" content="IE=edge">
+  <meta name ="viewport" content="width=device-width, initial-scale = 1.0">
+  <title>Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/ffee87f767.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+ 
+        <div id="contact">
+            <div class="container">
+                <nav> 
+                    <img src="Images/TerryLogo.png" class="logo" width="100%" height="100%"/>
+                    <ul id = "sidemenu">
+                        <li><a href="/index.html"> Home</a></li>
+                        <li><a href="/about.html"> Writing Section</a></li>
+                        <li><a href="/portfolio.html"> Communication Section</a></li>
+                        <li><a href="/plans.html"> Future Goals</a></li>
+                        <li><a href="/contact.html"> Contact</a></li>
+                    </ul>
+                        
+                </nav>
+                <div class="row">
+                    <div class="contact-left">
+                        <h1 class = "sub-title">Contact Me</h1>
+                        <p><i class="fa-brands fa-google"></i> damian.aguilar.work@gmail.com</p>
+                        <p><i class="fa-solid fa-phone-volume"></i> (903)-249-3337</p>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/sleepyd2004/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/damian.aguilar.1806/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://www.linkedin.com/in/damianaguilar2004/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                        <a href="/docs/Official Resume - Software Engineering.pdf" download="Official Resume - Software Engineering.pdf" class="btn btn2">Resume</a>
+                        <a href="/docs/Cover Letter - RBFCU Branch Member Service Representative.pdf" download="Cover Letter - RBFCU Branch Member Service Representative.pdf" class="btn btn2">Cover Letter</a>
+                    </div>
+                    <div class="contact-right">
+                        <form name="submit-to-google-sheet">
+                            <input type="text" name="Name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn btn2">Submit</button>
+                        </form>
+                        <span id="msg"></span>
+                    </div>
+                </div>
+    
+            </div>
+            
+        </div>
+        <div class="copyright">
+            <p>Copyright @ Damian Aguilar. Made with VSCode <i class="fa-solid fa-face-grin-beam"></i></p>
+        </div>
+    
+  
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxk_FPdm5ooPnYw0gAkRmSlFpJiGMIDWRaB4Vd28xT4RMHggmAuiPeXkzW8J1m3WvjYdQ/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+  
+        form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Thank you for contacting!"
+                setTimeout(function(){
+                msg.innerHTML = ""
+                }, 5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+  </body>
+  
